@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            /* border: 1px solid black; */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .title {
+            width: 100%;
+            display: inline-block;
+            background: none;
+            position: relative;
+        }
+        .title .first-title, .second-title {
+            width: 50%;
+            display: block;
+            float: left;
+            position: relative;
+        }
+        .title > .first-title {
+            font-size: 42px;
+            font-weight: 500;
+            padding-left: 20px;
+        }
+        .title > .second-title {
+            height: 100%;
+            position: relative;
+        }
+        .title > .second-title > div {
+            position: absolute;
+            top: 25px;
+            right: 0;
+            letter-spacing: 3px;
+        }
+        
+
+        .navi {
+            width: 100%;
+            background: rgb(29, 160, 29);
+            position: relative;
+            display: inline-block;
+        }
+        .navi > div {
+            padding: 15px;
+            text-align: center;
+            background: rgb(29, 160, 29);
+            color: white;
+            text-transform: uppercase;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .navi > .menu {
+            display: none;
+        }
+        .navi > div:hover {
+            background: white;
+            color: black;
+            z-index: -1;
+        }
+        .menu, .tuto, .ref, .examp, .exe {
+            display: block;
+            width: 17%;
+            float: left;
+        }
+        .search , .global {
+            display: block;
+            width: auto;
+            float: right;
+        }
+
+
+        .body {
+            background: white;
+            display: inline-block;
+            width: 100%;
+            top: -4px;
+            position: relative;
+        }
+        .lesson {
+            float:left;
+            width: 22%;
+            height: 700vh;
+        }
+        .lesson header {
+            padding: 10px;
+            font-size: 25px;
+        }
+        .lesson > div > p {
+            padding: 3px 10px;
+        }
+        .lesson > div > p:hover {
+            background: rgba(134, 122, 122, 0.575);
+        }
+
+
+        .learn {
+            width: 78%;
+            float: left;
+            position: relative;
+            border-left: 1px solid black;
+            padding: 20px;
+        }
+        .learn > div > .detail, .code {
+            float: left;
+            width: 50%;
+        }
+        .learn > div {
+            display: inline-block;
+            width: 100%;
+            height: auto;
+        }
+        .learn:nth-child(even){
+            background: white;
+        }
+        .learn:nth-child(odd){
+            background: #eee;
+        }
+        .detail {
+            text-align: center;
+            padding: 20px 5px;
+        }
+        .detail > header {
+            font-size: 70px;
+            font-weight: 0;
+        }
+        .detail > p {
+            font-size: 27px;
+        }
+        .detail > .btn {
+            position: relative;
+            background: none !important;
+            width: auto;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .btn > div {
+            background: gray;
+            padding: 10px;
+            margin: 5px;
+            font-size: 23px;
+            display: inline-block;
+            color: white;
+        }
+        .code > .frame {
+            width: auto;
+            background: #eee;
+            padding: 10px;
+            margin: 20px;
+            border-radius: 7px;
+            border: none;
+            box-shadow: 0 0 3px 2px gray;
+        }
+        .frame > header {
+            font-size: 20px;
+            margin: 15px;
+        }
+        .code_line {
+            width: auto;
+            background: white;
+            padding: 5px;
+            margin: 5px;
+            border-left: 5px solid rgb(43, 214, 43);
+        }
+        .code_line ~ .btn {
+            background: rgb(43, 214, 43);
+            color: white;
+            margin: 20px 5px;
+            position: relative;
+            width: fit-content;
+            padding: 10px;
+            font-size: 17px;
+        }
+
+
+        .language {
+            float: left;
+            width: 78%;
+            background: gray;
+            border-left: 1px solid black;
+        }
+        .language > div {
+            width: 50%;
+            float: left;
+            height: 300px;
+            padding: 20px;
+            background: rgb(99, 93, 93);
+            position: relative;
+        }
+        .language > div > div {
+            background: white !important;
+            color: black !important;
+            height: 100%;
+            text-align: center;
+            position: relative;
+        }
+        .language > div > div > header {
+            font-size: 30px;
+            background: transparent;
+            padding: 20px;
+        }
+        .language > div > div > p {
+            padding: 10px;
+            font-size: 22px;
+        }
+        .language > div > div > .btn {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+        }
+
+
+
+
+        @media (max-width:960px) {
+            .title .first-title, .second-title {
+                width: 100%;
+                height: auto;
+                text-align: center;
+                float: none;
+            }
+            .title > .second-title > div {
+                width: 100%;
+                position: static;
+                margin: 10px 0 ;
+            }
+
+
+            .navi > .exe {
+                display: none;
+            }
+
+
+
+            .learn > div > .detail, .code {
+                float: right;
+                width: 100%;
+            }
+        }
+        @media (max-width:870px){
+            .tuto, .ref, .examp {
+                display: none;
+            }
+            .navi > .menu {
+                display: block;
+                width: auto;
+            }
+
+
+            .lesson {
+                display: none;
+            }
+            .learn {
+                width: 100%;
+                float: right;
+            }
+            .language {
+                width: 100%;
+                float: right;
+            }
+            .language > div {
+                width: 100%;
+                float: none;
+            }
+            
+        }
+        @media (max-width:600px) {
+            .second-title {
+                display: none;
+            }
+            .frame {
+                display: none;
+            }
+        }
+        @media (max-width:300px){
+            .search , .global {
+                display: none;
+            }
+            .learn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <div class="first-title">W3Schools<span style="color:rgb(66, 218, 66)">.com</span></div>
+        <div class="second-title">
+            <div>THE WORLD'S LARGEST WEB DEVELOPER SITE</div>
+        </div>
+    </div>
+    <div class="navi">
+        <div class="menu">Menu</div>
+        <div class="tuto">Tutorials</div>
+        <div class="ref">Refrences</div>
+        <div class="examp">Examples</div>
+        <div class="exe">Exercises</div>
+
+        <div class="search">Search</div>
+        <div class="global">Global</div>
+    </div>
+    <div class="body">
+        <div class="lesson">
+            <div>
+                <header>HTML and CSS</header> 
+                <p>Learn HTML</p>
+                <p>Learn CSS</p>
+                <p>Learn Bootstrap</p>
+                <p>Learn W3.CSS</p>
+                <p>Learn Colors</p>
+                <p>Learn Icons</p>
+                <p>Learn Graphics</p>
+                <p>Learn How To</p>
+                <p>Learn Sass</p>
+
+                <header>JavaScript</header>
+                <p>Learn JavaScript</p>
+                <p>Learn jQuery</p>
+                <p>Learn React</p>
+                <p>Learn AngularJS</p>
+                <p>Learn JSON</p>
+                <p>Learn AJAX</p>
+                <p>Learn W3.JS</p>
+
+                <header>Server Side</header>
+                <p>Learn SQL</p>
+                <p>Learn PHP</p>
+                <p>Learn ASP</p>
+                <p>Learn Node.js</p>
+                <p>Learn Raspberry Pi</p>
+
+                <header>Programming</header>
+                <p>Learn Python</p>
+                <p>Learn Java</p>
+                <p>Learn C++</p>
+                <p>Learn C#</p>
+                <p>Learn Machine Learning</p>
+
+                <header>Web Building</header>
+                <p>Web Templates</p>
+                <p>Web Statistics</p>
+                <p>Web Certificates</p>
+                <p>Web Editor</p>
+                <p>Web Development</p>
+
+                <header>XML Tutorials</header>
+                <p>Learn XML</p>
+                <p>Learn XML AJAX</p>
+                <p>Learn XML DOM</p>
+                <p>Learn XML DTD</p>
+                <p>Learn XML Schema</p>
+                <p>Learn XSLT</p>
+                <p>Learn XPath</p>
+                <p>Learn XQuery</p>
+
+                <header>References</header>
+                <p>HTML Reference</p>
+                <p>CSS Reference</p>
+                <p>JS Reference</p>
+                <p>SQL Reference</p>
+                <p>PHP Reference</p>
+                <p>jQuery Reference</p>
+                <p>Python Reference</p>
+                <p>Bootstrap 3 Reference</p>
+                <p>Bootstrap 4 Reference</p>
+                <p>W3.CSS Reference</p>
+                <p>Java Reference</p>
+                <p>Angular Reference</p>
+                <p>Sass Reference</p>
+                <p>UTF-8 Reference</p>
+
+                <header>Exercises</header>
+                <p>HTML Exercises</p>
+                <p>CSS Exercises</p>
+                <p>JavaScript Exercises</p>
+                <p>SQL Exercises</p>
+                <p>PHP Exercises</p>
+                <p>Python Exercises</p>
+                <p>Java Exercises</p>
+                <p>C++ Exercises</p>
+                <p>C# Exercises</p>
+                <p>Bootstrap Exercises</p>
+            </div>
+        </div>
+
+        <div class="learn">
+            <div>
+                <div class="detail">
+                    <header>HTML</header>
+                    <p>The language for building web pages</p>
+                    <div class="btn">
+                        <div>LEARN HTML</div>
+                        <div>HTML REFRENCE</div>
+                    </div>
+                </div>
+                <div class="code">
+                    <div class="frame">
+                        <header>HTML Example:</header>
+                        <div class="code_line">
+                            &lt;!DOCTYPE html> <br>
+                            &lt;html><br>
+                            &lt;title>HTML Tutorial&lt;/title><br>
+                            &lt;body><br><br>
+
+                            &lt;h1>This is a heading&lt;/h1><br>
+                            &lt;p>This is a paragraph.&lt;/p><br><br>
+
+                            &lt;/body><br>
+                            &lt;/html><br>
+                        </div>
+                        <div class="btn">Try it Yourself >></div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+
+        <div class="learn">
+            <div>
+                <div class="code">
+                    <div class="frame" style="box-shadow: none;">
+                        <header>CSS Example</header>
+                        <div class="code_line">
+                            body { <br>
+                                background-color: lightblue;<br>
+                              }<br><br>
+                              
+                              h1 {<br>
+                                color: white;<br>
+                                text-align: center;<br>
+                              }<br><br>
+                              
+                              p {<br>
+                                font-family: verdana;<br>
+                                font-size: 20px;<br>
+                              }<br>
+                        </div>
+                        <div class="btn">Try it Yourself >></div>
+                    </div>
+                </div>
+                <div class="detail">
+                    <header>CSS</header>
+                    <p>The language for styling web pages</p>
+                    <div class="btn">
+                        <div>LEARN CSS</div>
+                        <div>CSS REFRENCE</div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+        
+        <div class="learn">
+            <div>
+                <div class="detail">
+                    <header>JavaScript</header>
+                    <p>The language for programming web pages</p>
+                    <div class="btn">
+                        <div>LEARN JAVASCRIPT</div>
+                        <div>JAVASCRIPT REFRENCE</div>
+                    </div>
+                </div>
+                <div class="code">
+                    <div class="frame">
+                        <header>JavaScript Example:</header>
+                        <div class="code_line">
+                            &lt;button onclick="myFunction()">Click Me!&lt;/button> <br><br>
+
+                            &lt;script><br>
+                            function myFunction() {<br>
+                            var x = document.getElementById("demo");<br>
+                            x.style.fontSize = "25px";<br>
+                            x.style.color = "red";<br>
+                            }<br>
+                            &lt;/script><br>
+                        </div>
+                        <div class="btn">Try it Yourself >></div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+
+        <div class="learn">
+            <div>
+                <div class="code">
+                    <div class="frame" style="box-shadow: none;">
+                        <header>SQL Example</header>
+                        <div class="code_line">
+                            SELECT * FROM Customers <br>
+                            WHERE Country='Mexico'; <br><br><br><br><br><br>
+                        </div>
+                        <div class="btn">Try it Yourself >></div>
+                    </div>
+                </div>
+                <div class="detail">
+                    <header>SQL</header>
+                    <p>A language for accessing databases</p>
+                    <div class="btn">
+                        <div>LEARN SQL</div>
+                        <div>SQL REFRENCE</div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+
+        <div class="language">
+            <div>
+                <div>
+                    <header>Python</header>
+                    <p>A programming language</p>
+                    <div class="btn">
+                        <div>LEARN PYTHON</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <header>PHP</header>
+                    <p>A web server programming language</p>
+                    <div class="btn">
+                        <div>LEARN PHP</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <header>jQuery</header>
+                    <p>A JavaScript library for developing web pages</p>
+                    <div class="btn">
+                        <div>LEARN JQUERY</div>
+                    </div>
+                </div>
+            </div>
+            <div >
+                <div>
+                    <header>Java</header>
+                    <p>A programming language</p>
+                    <div class="btn">
+                        <div>LEARN JAVA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
